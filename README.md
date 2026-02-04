@@ -1,7 +1,7 @@
 # Ex.No:1a  			Study of Socket Programming
 
 ## Aim: 
-To perform a study on Socket Programming
+To perform a study on Socket  Programming
 ## Introduction:
 
  	Socket programming is a crucial aspect of network communication, allowing for data exchange between computers over a network. It forms the backbone of various networked applications, enabling communication between clients and servers. This study explores the fundamental concepts of socket programming, its use cases, and provides a practical example to demonstrate its implementation.
@@ -32,6 +32,21 @@ To perform a study on Socket Programming
 •	Examples of functions include socket(), bind(), listen(), accept(), connect(), send(), and recv().
 
 ## Server-Side Operations:
+import socket             
+# next create a socket object 
+s = socket.socket()         
+print ("Socket successfully created")
+port = 12345                
+s.bind(('127.0.0.1', port))         
+print ("socket binded to %s" %(port)) 
+s.listen(5)     
+print ("socket is listening")            
+while True: 
+  c, addr = s.accept()     
+  print ('Got connection from', addr )
+  c.send('Thank you for connecting'.encode()) 
+  # Close the connection with the client 
+c.close()
 
 •	Servers create a socket using socket() and bind it to a specific IP address and port using bind().
 •	They then listen for incoming connections with listen() and accept connections with accept().
@@ -39,6 +54,22 @@ To perform a study on Socket Programming
 •	shed, servers can send and receive data using send() and recv().
 
 ## Client –Server Operations
+# Import socket module 
+import socket             
+
+# Create a socket object 
+s = socket.socket()         
+
+# Define the port on which you want to connect 
+port = 12345                
+
+# connect to the server on local computer 
+s.connect(('127.0.0.1', port)) 
+
+# receive data from the server and decoding to get the string.
+print (s.recv(1024).decode())
+# close the connection 
+s.close()
 
 Clients create a socket using socket() and connect to a server using connect().
 After establishing a connection, clients can send and receive data using send() and recv().
