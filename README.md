@@ -83,11 +83,47 @@ Socket programming finds applications in various domains, including web developm
 3.	File Transfer Protocol: Protocols like FTP (File Transfer Protocol) utilize socket programming for transferring files between a client and a server.
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
+PROGRAME:
+CLIENT:
+# Import socket module 
+import socket             
 
+# Create a socket object 
+s = socket.socket()         
+
+# Define the port on which you want to connect 
+port = 12345                
+
+# connect to the server on local computer 
+s.connect(('127.0.0.1', port)) 
+
+# receive data from the server and decoding to get the string.
+print (s.recv(1024).decode())
+# close the connection 
+s.close()
+SERVER:
+import socket             
+# next create a socket object 
+s = socket.socket()         
+print ("Socket successfully created")
+port = 12345                
+s.bind(('127.0.0.1', port))         
+print ("socket binded to %s" %(port)) 
+s.listen(5)     
+print ("socket is listening")            
+while True: 
+  c, addr = s.accept()     
+  print ('Got connection from', addr )
+  c.send('Thank you for connecting'.encode()) 
+  # Close the connection with the client 
+c.close()
+OUTPUT:
+SERVER:
+![WhatsApp Image 2026-01-30 at 2 17 45 PM](https://github.com/user-attachments/assets/52e69be6-44de-4f43-a169-10d5bff673b1)
+CLIENT:
+![WhatsApp Image 2026-01-30 at 2 17 46 PM](https://github.com/user-attachments/assets/1b32de6c-12f5-4b75-94c5-461a619fff49)
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
 
-<img width="1129" height="834" alt="image" src="https://github.com/user-attachments/assets/382038c7-49df-4a8b-8729-b4181c196016" />
 
-<img width="1123" height="826" alt="image" src="https://github.com/user-attachments/assets/4a155a5b-b6cc-4ef7-a649-c682305c6e87" />
