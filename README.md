@@ -32,21 +32,6 @@ To perform a study on Socket  Programming
 •	Examples of functions include socket(), bind(), listen(), accept(), connect(), send(), and recv().
 
 ## Server-Side Operations:
-import socket             
-# next create a socket object 
-s = socket.socket()         
-print ("Socket successfully created")
-port = 12345                
-s.bind(('127.0.0.1', port))         
-print ("socket binded to %s" %(port)) 
-s.listen(5)     
-print ("socket is listening")            
-while True: 
-  c, addr = s.accept()     
-  print ('Got connection from', addr )
-  c.send('Thank you for connecting'.encode()) 
-  # Close the connection with the client 
-c.close()
 
 •	Servers create a socket using socket() and bind it to a specific IP address and port using bind().
 •	They then listen for incoming connections with listen() and accept connections with accept().
@@ -54,24 +39,7 @@ c.close()
 •	shed, servers can send and receive data using send() and recv().
 
 ## Client –Server Operations
-# Import socket module 
-import socket             
-
-# Create a socket object 
-s = socket.socket()         
-
-# Define the port on which you want to connect 
-port = 12345                
-
-# connect to the server on local computer 
-s.connect(('127.0.0.1', port)) 
-
-# receive data from the server and decoding to get the string.
-print (s.recv(1024).decode())
-# close the connection 
-s.close()
-
-Clients create a socket using socket() and connect to a server using connect().
+clients create a socket using socket() and connect to a server using connect().
 After establishing a connection, clients can send and receive data using send() and recv().
 
 ## Use Cases of Socket Programming:
@@ -84,7 +52,8 @@ Socket programming finds applications in various domains, including web developm
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
 PROGRAME:
-CLIENT:
+```
+client.py
 # Import socket module 
 import socket             
 
@@ -101,9 +70,9 @@ s.connect(('127.0.0.1', port))
 print (s.recv(1024).decode())
 # close the connection 
 s.close()
-
-SERVER:
-
+```
+```
+server.py
 import socket             
 # next create a socket object 
 s = socket.socket()         
@@ -119,6 +88,7 @@ while True:
   c.send('Thank you for connecting'.encode()) 
   # Close the connection with the client 
 c.close()
+```
 OUTPUT:
 SERVER:
 ![WhatsApp Image 2026-01-30 at 2 17 45 PM](https://github.com/user-attachments/assets/52e69be6-44de-4f43-a169-10d5bff673b1)
